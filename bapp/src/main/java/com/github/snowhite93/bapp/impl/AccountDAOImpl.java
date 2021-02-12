@@ -31,7 +31,7 @@ public class AccountDAOImpl implements AccountDAO {
     public boolean createAccount(Account account) throws BankingAppException {
         try {
             Connection connection = SqlConnection.getConnection();
-            String sql = "INSERT INTO accounts(account_id, user_id, balance, date_created) VALUES (?,?,?,?)";
+            String sql = "INSERT INTO accounts(user_id, balance, date_created) VALUES (?,?,?,?)";
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setLong(1, account.getAccountId());
             stmt.setLong(2, account.getUserId());

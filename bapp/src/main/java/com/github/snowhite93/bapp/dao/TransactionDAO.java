@@ -9,13 +9,11 @@ import java.util.List;
 
 public interface TransactionDAO {
 
-    List<Transaction> allTransactiosForUser(long userId) throws BankingAppSystemException;
-    List<Transaction> seeAllPendingTransactions(long transactionId) throws BankingAppException;
-    void withdrawMoney(double amount) throws BankingAppUserException;
-    void depositMoney (double amount) throws BankingAppUserException;
-    void transferMoney(double amount) throws BankingAppUserException;
-    boolean acceptTransfer (long fromAccount) throws BankingAppSystemException;
-    boolean rejectTransfer(long fromAccount) throws BankingAppSystemException;
-    boolean cancelTransfer (long toAccount) throws BankingAppSystemException;
+    List<Transaction> allTransactionsForAccount(long accountId) throws BankingAppSystemException;
+    List<Transaction> seeAllPendingTransactions(long accountId) throws BankingAppException;
+    boolean acceptTransaction (long transactionId ) throws BankingAppSystemException;
+    boolean cancelTransaction(long transactionId) throws BankingAppSystemException;
+    boolean createTransaction (long fromAccount, long toAccount, double amount) throws BankingAppSystemException;
+    List<Transaction> showAllTransactions() throws BankingAppSystemException;
 
 }

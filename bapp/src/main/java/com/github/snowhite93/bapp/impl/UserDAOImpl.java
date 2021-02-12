@@ -32,7 +32,7 @@ public class UserDAOImpl implements UserDAO {
     public boolean createUser(User user) throws BankingAppSystemException {
         try {
             Connection connection = SqlConnection.getConnection();
-            String sql = "INSERT INTO bank_users(user_id, username, pass, first_name, last_name, phone_number, email, date_of_birth) VALUES (?,?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO bank_users(username, pass, first_name, last_name, phone_number, email, date_of_birth) VALUES (?,?,?,?,?,?,?,?)";
             PreparedStatement stmt = connection.prepareStatement(sql);
 
             stmt.setLong(1, user.getUserId());

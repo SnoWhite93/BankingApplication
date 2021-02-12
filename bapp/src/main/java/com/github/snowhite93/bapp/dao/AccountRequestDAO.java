@@ -8,9 +8,11 @@ import java.util.List;
 
 public interface AccountRequestDAO {
 
-    AccRequest createAccRequest( AccRequest accRequest) throws BankingAppSystemException;
-    List<AccRequest> seeAllAccRequests(long requestId) throws BankingAppSystemException;
-    List<AccRequest> seeAllPendingRequests (String status) throws BankingAppSystemException;
-    boolean rejectAccRequest(long requestId) throws BankingAppException;
+   boolean createAccRequest( long userId, double startingBalance) throws BankingAppSystemException;
+    List<AccRequest> seeAllAccRequests() throws BankingAppSystemException;
+    List<AccRequest> seeAllPendingRequests () throws BankingAppException;
+    boolean rejectAccRequest(long requestId, String rejectionReason) throws BankingAppException;
     boolean approveAccRequest(long requestId) throws BankingAppException;
+    List<AccRequest> seeAllUserRequests (long userId) throws BankingAppException;
+    AccRequest findRequestByRequestId (long requestId);
 }
